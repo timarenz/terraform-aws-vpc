@@ -16,12 +16,13 @@ Example: The name could be something like tim-staging-vpc, where tim is the owne
 * `public_subnet_id` - Id of the public subnet
 
 ## Example
-
+```hcl
 module "vpc-aws" {
   source            = "github.com/timarenz/tf_aws_vpc"
   environment_name  = "staging"
   owner_name        = "tim"
 }
+```
 
 ## Authors
 Created and maintaned by [Tim Arenz](https://github.com/timarenz)
