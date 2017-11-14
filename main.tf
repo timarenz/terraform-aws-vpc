@@ -19,6 +19,7 @@ resource "aws_subnet" "public" {
 resource "aws_subnet" "private" {
   vpc_id            = "${aws_vpc.default.id}"
   cidr_block        = "192.168.2.0/24"
+  availability_zone = "${aws_subnet.public.availability_zone}"
 
   tags {
     Name  = "${var.owner_name}-${var.environment_name}-private"
