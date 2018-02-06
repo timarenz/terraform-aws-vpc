@@ -12,8 +12,13 @@ Example: The name could be something like tim-staging-vpc, where tim is the owne
 ## Output variables
 
 * `vpc_id` - Id of the VPC created
+* `vpc_name` - Name tag of the VPC
 * `private_subnet_id` - Id of the private subnet
+* `private_subnet_name` - Name tag of the private subnet
+* `private_subnet_az` - Availability zone of the private subnet
 * `public_subnet_id` - Id of the public subnet
+* `public_subnet_name` - Name tag of the public subnet
+* `public_subnet_az` - Availabilit zone of the private subnet
 
 ## Example
 ```hcl
