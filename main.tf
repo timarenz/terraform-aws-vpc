@@ -1,12 +1,24 @@
 data "aws_region" "current" {}
 
+locals {
+  default_vpc_tags = {
+    Name = "${var.environment_name}-vpc"
+  }
+
+  default_public_subnet_tags = {
+    Name = "${var.environment_name}-public"
+  }
+
+  default_private_subnet_tags = {
+    Name = "${var.environment_name}-private"
+  }
+}
+
 resource "aws_vpc" "default" {
   cidr_block           = "192.168.0.0/16"
   enable_dns_hostnames = true
 
-  tags {
-    Name = "${var.environment_name}-vpc"
-  }
+  tags = "${merge(local.default_vpc_tags, var.vpc_tags)}"
 }
 
 resource "aws_subnet" "public" {
@@ -14,9 +26,7 @@ resource "aws_subnet" "public" {
   cidr_block              = "192.168.1.0/24"
   map_public_ip_on_launch = true
 
-  tags {
-    Name = "${var.environment_name}-public"
-  }
+  tags = "${merge(local.default_public_subnet_tags, var.public_subnet_tags)}"
 }
 
 resource "aws_subnet" "private" {
@@ -24,9 +34,7 @@ resource "aws_subnet" "private" {
   cidr_block        = "192.168.2.0/24"
   availability_zone = "${aws_subnet.public.availability_zone}"
 
-  tags {
-    Name = "${var.environment_name}-private"
-  }
+  tags = "${merge(local.default_private_subnet_tags, var.private_subnet_tags)}"
 }
 
 resource "aws_internet_gateway" "default" {

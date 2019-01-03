@@ -1,4 +1,3 @@
-
 output "vpc_id" {
   value = "${aws_vpc.default.id}"
 }
@@ -9,6 +8,10 @@ output "vpc_name" {
 
 output "vpc_region" {
   value = "${data.aws_region.current.name}"
+}
+
+output "vpc_tags" {
+  value = "${aws_vpc.default.tags}"
 }
 
 output "vpc_private_subnet_id" {
@@ -27,6 +30,10 @@ output "vpc_private_subnet_cidr" {
   value = "${aws_subnet.private.cidr_block}"
 }
 
+output "vpc_private_subnet_tags" {
+  value = "${aws_subnet.private.tags}"
+}
+
 output "vpc_public_subnet_id" {
   value = "${aws_subnet.public.id}"
 }
@@ -43,3 +50,6 @@ output "vpc_public_subnet_cidr" {
   value = "${aws_subnet.public.cidr_block}"
 }
 
+output "vpc_public_subnet_tags" {
+  value = "${aws_subnet.public.tags}"
+}
