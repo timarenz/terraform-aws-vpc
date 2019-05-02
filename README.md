@@ -1,6 +1,6 @@
-# tf_aws_vpc
+# terraform-aws-vpc
 This Terraform module is used to create a simple AWS VPC with a public and private network using 192.168.0.0/16 as cidr block.
-The public network uses 192.168.1.0/24 as subnet and automatically maps publich IP addresses to instaces.
+The public network uses 192.168.1.0/24 as subnet and automatically maps public IP addresses to instaces.
 The private network uses the subnet 192.168.2.0/24.
 
 ## Input variables
@@ -34,7 +34,7 @@ Example: The name could be something like tim-staging-vpc, tim-staging the envir
 ## Example
 ```hcl
 module "vpc-aws" {
-  source            = "github.com/timarenz/tf_aws_vpc"
+  source            = "github.com/timarenz/terraform-aws-vpc"
   environment_name  = "staging"
 }
 ```
